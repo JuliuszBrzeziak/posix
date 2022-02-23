@@ -23,16 +23,17 @@ int main(void)
             case 0:
             //break;
             //break doesnt work!
-            i = 3;
+            execl("./child.x","./child.x","abc",NULL);
 
             //parent case
             default:
             usleep(100);
+            wait(NULL);
+
 
 
         }
     }
-
 
     pid();
     return 0;
