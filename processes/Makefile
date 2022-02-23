@@ -7,6 +7,7 @@ PID = pid.c
 PID_OBJ = pid.o
 PID_LIB = libpid.so
 PID_NAME = pid
+CHILD = child
 
 LD_LIBRARY_PATH = $LD_LIBRARY_PATH
 
@@ -25,7 +26,8 @@ LFLAGS = -Wall
 
 CO = gcc
 
-
+$(CHILD):
+	$(CO) $(LFLAGS) -o $(CHILD).x $(CHILD).c
 
 $(PID_LIB): $(PID)
 	$(CO) -c $(CFLAGS) $(PID)
@@ -34,13 +36,13 @@ $(PID_LIB): $(PID)
 	mv $(PID_LIB) ./lib
 
 
-$(EXEC1): $(PID_LIB) $(PID)
+$(EXEC1): $(PID_LIB) $(PID) 
 	
 	$(CO) $(LFLAGS) -o $@ $(NAMER).c -l$(PID_NAME)
-	export LD_LIBRARY_PATH=${DIR}/lib:$$LD_LIBRARY_PATH
+#	export LD_LIBRARY_PATH=${DIR}/lib:$$LD_LIBRARY_PATH
 
 
-run: $(EXEC1)
+run: $(EXEC1) $(CHILD)
 	export LD_LIBRARY_PATH=./lib:; \
 	./$(EXEC1)
 
