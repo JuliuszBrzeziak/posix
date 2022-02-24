@@ -5,7 +5,7 @@
 #include "mymc.h"
 #include <time.h>
 
-#define N 1000000000
+#define N 100000000
 
 int test2(void){
     printf("UDAŁOSIsE\n");
@@ -34,6 +34,12 @@ int collect2(RndArr *self){
     float temp = 0;
     int s = 0;
     int c = 0;
+    srand(time(NULL));
+
+
+    for(int i = 0; i<N;i++){
+        self->array[i] = (float)rand() / (float)RAND_MAX;
+    }
 
     for(int i = 0; i <N; i++){
         temp = temp +self->array[i];
@@ -48,8 +54,9 @@ int collect2(RndArr *self){
             s++;
         }
     }
-    self->avr = (float)self->sum/(float)self->count;
-    printf("%f,  %d,   %d",self->avr,self->sum,self->count);
+    float a = (float)self->sum/(float)self->count;
+    self->avr = a;
+    printf("%f,  %d,   %d\n",a,self->sum,self->count);
 }
 
 

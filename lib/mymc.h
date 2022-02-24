@@ -22,4 +22,7 @@ RndArr  *create(void);
 int collect2(RndArr *self);
 
 int test2(void);
+
+
+
 #endif
