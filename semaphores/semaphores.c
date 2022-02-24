@@ -11,7 +11,6 @@ sem_t sem;
   
 int main()
 {
-    //sem_init(sem, 1, 0);
 
 
 
@@ -28,29 +27,27 @@ int main()
     if(p==0)
     {
         usleep(500);
-    sem_wait(sem);
-    printf("\nEntered..\n");
+        sem_wait(sem);
+        printf("\nEntered\n");
   
-    //critical section
-    sleep(4);
-      
-    //signal
-    printf("\nJust Exiting...\n");
-    sem_post(sem);
+        usleep(800);
+
+
+        printf("\nEXIT\n");
+        sem_post(sem);
     }   
 
     //parent
     else
     {
-    sem_wait(sem);
-    printf("\nEntered..\n");
+        sem_wait(sem);
+        printf("\nENTER\n");
   
-    //critical section
-    sleep(4);
+        //critical section
+        usleep(800);
       
-    //signal
-    printf("\nJust Exiting...\n");
-    sem_post(sem);
+        printf("\nEXIT\n");
+        sem_post(sem);
     }
 
 
