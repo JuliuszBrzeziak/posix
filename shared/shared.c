@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 
@@ -42,7 +43,7 @@ int main(){
   }
 
   if(p>0){
-    usleep(100);
+    wait(NULL);
     int *datar = (int*)mmap(0,SIZE,PROT_READ,MAP_SHARED,fd,0);
     printf("recive adress:%p\n",datar);
 
