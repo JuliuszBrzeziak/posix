@@ -45,12 +45,17 @@ $(EXEC1):
 
 run: clean $(EXEC1)
 	export LD_LIBRARY_PATH=../lib:; \
-	./$(EXEC1) 3
+	./pipes3.o
+
+pipes: clean 
+	$(CO) $(LFLAGS) -o $@.o $(NAMER).c -lpid
+	export LD_LIBRARY_PATH=${DIR}/../lib:$$LD_LIBRARY_PATH
+	./pipes.o
 
 
 pid: clean $(PID_LIB) 
 	
 clean:
 	rm -f .o *~ *.a *.so *.x core core *.out; rm -rf
-	rm pipes.o
-	ls
+#	rm -f pipes.o
+#	ls
