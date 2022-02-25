@@ -9,17 +9,16 @@ typedef struct RndArr{
     int count;
     float avr;
     float *array;
+    int trials;
     int (*test)(void);
-    void (*printRA)(struct RndArr *self);
+    int (*calculate)(struct RndArr *self,int times);
     void (*collect)(struct RndArr *self)
 
 }RndArr;
 
-void printrndarr(RndArr *self);
-
 RndArr  *create(RndArr *self);
 
-int collect2(RndArr *self);
+int collect2(RndArr *self,int times);
 
 int test2(void);
 
