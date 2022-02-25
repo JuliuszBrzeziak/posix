@@ -5,24 +5,24 @@
 #include "mymc.h"
 #include <time.h>
 
-#define N 100000000
+#define N 1000
 
 int test2(void){
     printf("UDAŁOSIsE\n");
     return 0;
 }
 
-RndArr  *create(void){
+RndArr  *create(RndArr *self){
     srand(time(NULL));
-    RndArr *p = malloc(sizeof(RndArr));
-    p->test = test2;
-    p->printRA = printrndarr;
-    p->array = malloc(sizeof(float)*N);
+    //RndArr *self = malloc(sizeof(RndArr));
+    self->test = test2;
+    self->printRA = printrndarr;
+    self->array = malloc(sizeof(float)*N);
     for(int i = 0; i<N;i++){
-        p->array[i] = (float)rand() / (float)RAND_MAX;
+        self->array[i] = (float)rand() / (float)RAND_MAX;
         //printf("\n%f\n",p->array[i]);
     }
-    return p;
+    return self;
 }
 
 void printrndarr(RndArr *self){

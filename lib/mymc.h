@@ -17,7 +17,7 @@ typedef struct RndArr{
 
 void printrndarr(RndArr *self);
 
-RndArr  *create(void);
+RndArr  *create(RndArr *self);
 
 int collect2(RndArr *self);
 
